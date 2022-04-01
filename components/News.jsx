@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import * as React from 'react';
 import Axios from 'axios';
+import { Box } from '@chakra-ui/react'
 
 export default function News() {
   const [search, setSearch] = React.useState('');
@@ -20,17 +21,18 @@ export default function News() {
         })
         .map((news) => {
           return (
-            <div key={news} className="news-list">
-              <div className="news-logo">
+            <Box key={''} boxShadow='base' mb={2.5} p={3} rounded={15} bg='white'>
+              <div>
                 <a href={news.link}>
-                  <img src={news.imgURL} alt="logo" width="100px" />
+                  <img src={news.imgURL} alt="logo" width="60px" />
                 </a>
               </div>
-              <div className="news-source">{news.source}</div>
-              <a className="news-title" href={news.shareURL}>
+
+              <div >{news.source}</div>
+              <a href={news.shareURL}>
                 {news.title}
               </a>
-            </div>
+            </Box>
           );
         })}
     </>

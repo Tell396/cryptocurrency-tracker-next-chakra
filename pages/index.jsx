@@ -2,39 +2,49 @@ import React from 'react';
 import Crypto from '../components/Crypto';
 import News from '../components/News';
 
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
-import { Button, ButtonGroup } from '@chakra-ui/react'
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
+import { Button, Center, Heading } from '@chakra-ui/react';
+
+import Head from 'next/head';
 
 const Home = () => {
-  const [search, setSearch] = React.useState('');
-
-  const blue = {
-    50: '#F0F7FF',
-    100: '#C2E0FF',
-    200: '#80BFFF',
-    300: '#66B2FF',
-    400: '#3399FF',
-    500: '#007FFF',
-    600: '#0072E5',
-    700: '#0059B2',
-    800: '#004C99',
-    900: '#003A75',
-  };
-
   return (
-    <div className="App">
-      <h1>Cryptocurrency</h1>
-      <Button
-        colorScheme="linkedin"
-        onClick={() => window.location.reload()}
-        sx={{ mb: '10px' }}
-      >Refresh</Button>
+    <>
+      <Head>
+        <title>Cryptocurrency tracker</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Stalinist+One&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
 
-      <Tabs variant='enclosed'>
-        <TabList>
-          <Tab>Crypto</Tab>
-          <Tab>News</Tab>
-        </TabList>
+      <Center m={5}>
+        <Heading fontFamily="Stalinist One" fontWeight="500" fontSize='2xl'>
+          Cryptocurrency
+        </Heading>
+      </Center>
+
+      <Button
+        colorScheme="twitter"
+        color="white"
+        position="fixed"
+        zIndex="999"
+        bottom="0"
+        right="0"
+        m={3}
+        onClick={() => window.location.reload()}>
+        Refresh
+      </Button>
+
+      <Tabs variant="enclosed">
+        <Center>
+          <TabList>
+            <Tab>Crypto</Tab>
+            <Tab>News</Tab>
+          </TabList>
+        </Center>
         <TabPanels>
           <TabPanel>
             <Crypto />
@@ -44,8 +54,7 @@ const Home = () => {
           </TabPanel>
         </TabPanels>
       </Tabs>
-
-    </div>
+    </>
   );
 };
 
